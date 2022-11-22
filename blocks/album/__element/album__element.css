@@ -1,0 +1,8 @@
+.album__element {
+    list-style-type: none;
+    background-color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 10px;
+    max-width: 282px;
+    min-height: 361px;
+}

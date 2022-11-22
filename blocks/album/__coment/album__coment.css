@@ -1,0 +1,16 @@
+.album__coment{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px 15px 25px 21px;
+    align-items: center;
+    max-width: 246px;
+}
+
+
+@media screen and (max-width:640px) {
+    .album__coment{
+        padding:23px 15px 23px 21px;
+    }
+    
+}

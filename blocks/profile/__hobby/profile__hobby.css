@@ -1,0 +1,16 @@
+.profile__hobby {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+
+@media screen and (max-width:640px) {
+    .profile__hobby {
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+}

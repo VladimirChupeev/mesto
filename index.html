@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Место</title>
+</head>
+<page class="content">
+
+    <body class="body">
+        <header class="header">
+            <img class="header__logo" src="./images/header_logo-min.svg" alt="логотип">
+        </header>
+        <section class="profile">
+                <img class="profile__avatar" src="./images/kysto.svg" alt="Кусто">
+            <div class="profile__info">
+                <div class="profile__title">
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <button type="button" class="profile__edit_button"></button>
+                </div>
+                <p class="profile__hobby">Исследователь океана</p>
+            </div>
+            <button type="button" class="profile__add_button"></button>
+
+        </section>
+
+        <section class="album">
+            <ul class="album__block">
+                <li class="album__element">
+                    <img class="album__foto" src="./images/photo-grid-arisa.jpg" alt="Байкал">
+                    <div class="album__coment">
+                        <p class="album__text">Байкал</p>
+                        <button class="album__like" type="button"></button>
+                    </div>
+                </li>
+                <li class="album__element">
+                    <img class="album__foto" src="./images/photo-grid-elbrus.jpg" alt="11">
+                    <div class="album__coment">
+                        <p class="album__text">Эльбрус</p>
+                        <button class="album__like" type="button"></button>
+                    </div>
+                </li>
+                <li class="album__element">
+                    <img class="album__foto" src="./images/place-kosa.jpg" alt="11">
+                    <div class="album__coment">
+                        <p class="album__text">Куршская коса</p>
+                        <button class="album__like" type="button"></button>
+                    </div>
+                </li>
+                <li class="album__element">
+                    <img class="album__foto" src="./images/photo-grid-sochi.jpg" alt="11">
+                    <div class="album__coment">
+                        <p class="album__text">Сочи</p>
+                        <button class="album__like" type="button"></button>
+                    </div>
+                </li>
+                <li class="album__element">
+                    <img class="album__foto" src="./images/place-karelia.jpg" alt="11">
+                    <div class="album__coment">
+                        <p class="album__text">Корелия</p>
+                        <button class="album__like" type="button"></button>
+                    </div>
+                </li>
+                <li class="album__element">
+                    <img class="album__foto" src="./images/dombai.svg" alt="11">
+                    <div class="album__coment">
+                        <p class="album__text">Домбай</p>
+                        <button class="album__like" type="button"></button>
+                    </div>
+                </li>
+            </ul>
+
+        </section>
+        <footer class="footer">
+            <p class="footer__copy">&#169 2020 Mesto Russia</p>
+        </footer>
+
+        <div id="profile" class="popup">
+            <div class="popup__container">
+                <button class="popup__close" type="button"></button>
+                <h3 class="popup__title"> Редактировать профиль</h3>
+                <form class="popup__profile-form">
+                    <input id="name" class="popup__input" type="text">
+                    <input id="hobby" class="popup__input" type="text">
+                    <button type="submit" class="popup__submit">Сохранить</button>
+                </form>
+            </div>
+
+        </div>
+        <script src="./script.js"></script>
+    </body>
+</page>
+
+
+
+
+</html>

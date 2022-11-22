@@ -1,0 +1,25 @@
+.album__block{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(min-content, max-content));
+    gap: 17px;
+    margin-bottom: 20px;
+    list-style-type: none;
+    padding-left: 0;
+    
+}
+
+@media screen and (max-width:1240px) {
+    .album__block{
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+    }
+}
+
+@media screen and (max-width:980px) {
+    .album__block{
+    grid-template-columns: minmax(min-content, max-content);
+    gap: 20px;
+    width: 282px;
+    margin: auto;
+
+    }
+}

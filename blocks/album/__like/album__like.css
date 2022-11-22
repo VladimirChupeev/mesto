@@ -1,0 +1,13 @@
+.album__like{
+    width: 22px;
+    height: 19px;
+    background-color:#ffffff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../../../images/like.svg);
+    border: none;
+}
+
+.album__like:hover {
+    opacity: 0.6;
+}
