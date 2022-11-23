@@ -1,4 +1,4 @@
-.profile__edit_button{
+.profile__edit{
     width: 24px;
     height: 24px;
     background-image: url(../../../images/pen.svg);
@@ -9,6 +9,6 @@
     
 }
 
-.profile__edit_button:hover {
+.profile__edit:hover {
     opacity: 0.6;
 }

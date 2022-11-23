@@ -1,5 +1,5 @@
 // Кнопка редактирования профиля
-const profileEditButton = document.querySelector(".profile__edit_button");
+const profileEditButton = document.querySelector(".profile__edit");
 // popup профиля
 const profilePopup = document.querySelector("#profile");
 // форма профиля
@@ -11,7 +11,7 @@ const nameInputElement = document.querySelector("#name");
 // Нижний инпут
 const hobbyProfileElement = document.querySelector("#hobby");
 // Кнопка добавления картинки
-const addbutton = document.querySelector(".profile__add_button");
+const addbutton = document.querySelector(".profile__add");
 // кнопка сохранить
 const submit = document.querySelector(".popup__submit");
 // строка имени и занятия
