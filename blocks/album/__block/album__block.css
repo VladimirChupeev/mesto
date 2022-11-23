@@ -11,7 +11,10 @@
 @media screen and (max-width:1240px) {
     .album__block{
     grid-template-columns: repeat(2, minmax(min-content, max-content));
+    margin: auto;
+    justify-content: center;
     }
+
 }
 
 @media screen and (max-width:980px) {
@@ -19,7 +22,6 @@
     grid-template-columns: minmax(min-content, max-content);
     gap: 20px;
     width: 282px;
-    margin: auto;
 
     }
 }

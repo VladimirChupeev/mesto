@@ -41,6 +41,6 @@ function formSubmitHandler(evt) {
 }
 
 function fillProfileInputs() {
-    nameInputElement.value = profileName.textContent;
-    hobbyProfileElement.value = profileHobby.textContent;
+  nameInputElement.value = profileName.textContent;
+  hobbyProfileElement.value = profileHobby.textContent;
 }

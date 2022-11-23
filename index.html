@@ -9,10 +9,11 @@
 </head>
 
 <body class="body">
-    <div class="content">
-        <header class="header">
-            <img class="header__logo" src="./images/header_logo-min.svg" alt="логотип">
-        </header>
+
+    <header class="header">
+        <img class="header__logo" src="./images/header_logo-min.svg" alt="логотип">
+    </header>
+    <main class="content">
         <section class="profile">
             <img class="profile__avatar" src="./images/kysto.svg" alt="Кусто">
             <div class="profile__info">
@@ -31,68 +32,69 @@
                 <li class="album__element">
                     <img class="album__foto" src="./images/photo-grid-arisa.jpg" alt="Байкал">
                     <div class="album__coment">
-                        <p class="album__text">Байкал</p>
+                        <h2 class="album__text">Байкал</h2>
                         <button class="album__like" type="button"></button>
                     </div>
                 </li>
                 <li class="album__element">
                     <img class="album__foto" src="./images/photo-grid-elbrus.jpg" alt="Эльбрус">
                     <div class="album__coment">
-                        <p class="album__text">Эльбрус</p>
+                        <h2 class="album__text">Эльбрус</h2>
                         <button class="album__like" type="button"></button>
                     </div>
                 </li>
                 <li class="album__element">
                     <img class="album__foto" src="./images/place-kosa.jpg" alt="Куршская">
                     <div class="album__coment">
-                        <p class="album__text">Куршская коса</p>
+                        <h2 class="album__text">Куршская коса</h2>
                         <button class="album__like" type="button"></button>
                     </div>
                 </li>
                 <li class="album__element">
                     <img class="album__foto" src="./images/photo-grid-sochi.jpg" alt="Сочи">
                     <div class="album__coment">
-                        <p class="album__text">Сочи</p>
+                        <h2 class="album__text">Сочи</h2>
                         <button class="album__like" type="button"></button>
                     </div>
                 </li>
                 <li class="album__element">
                     <img class="album__foto" src="./images/place-karelia.jpg" alt="Корелия">
                     <div class="album__coment">
-                        <p class="album__text">Корелия</p>
+                        <h2 class="album__text">Корелия</h2>
                         <button class="album__like" type="button"></button>
                     </div>
                 </li>
                 <li class="album__element">
                     <img class="album__foto" src="./images/dombai.svg" alt="Домбай">
                     <div class="album__coment">
-                        <p class="album__text">Домбай</p>
+                        <h2 class="album__text">Домбай</h2>
                         <button class="album__like" type="button"></button>
                     </div>
                 </li>
             </ul>
 
         </section>
-        <footer class="footer">
-            <p class="footer__copy">© 2020 Mesto Russia</p>
-        </footer>
+    </main>
+    <footer class="footer">
+        <p class="footer__copy">© 2020 Mesto Russia</p>
+    </footer>
 
-        <div id="profile" class="popup">
-            <div class="popup__container">
-                <button class="popup__close" type="button"></button>
-                <h3 class="popup__title"> Редактировать профиль</h3>
-                <form class="popup__profile-form">
-                    <input id="name" class="popup__input" type="text">
-                    <input id="hobby" class="popup__input" type="text">
-                    <button type="submit" class="popup__submit">Сохранить</button>
-                </form>
-            </div>
-
+    <div id="profile" class="popup">
+        <div class="popup__container">
+            <button class="popup__close" type="button"></button>
+            <h3 class="popup__title"> Редактировать профиль</h3>
+            <form name="popup__profile-form" class="popup__profile-form">
+                <input placeholder="Имя" name="popup__input_name" id="name" class="popup__input popup__input_type_name"
+                    type="text">
+                <input placeholder="Хобби" name="popup__input_hobby" id="hobby"
+                    class="popup__input popup__input_type_hobby" type="text">
+                <button type="submit" class="popup__submit">Сохранить</button>
+            </form>
         </div>
-        <script src="./script.js"></script>
-    </div>
-</body>
 
+    </div>
+    <script src="./scripts/script.js"></script>
+</body>
 
 
 

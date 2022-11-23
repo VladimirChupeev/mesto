@@ -1,4 +1,4 @@
-.header{
+.header {
     display: flex;
     margin: 45px auto;
     width: 880px;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width:640px) {
-    .header{
+    .header {
         max-width: 320px;
         margin: 28px 0 38px;
     }

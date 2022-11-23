@@ -2,13 +2,12 @@
     display: flex;
     justify-content: start;
     align-items: center;
+    margin-bottom: 48px;
 }
 
 
-@media screen and (max-width:1000px) {
-    .profile{
-flex-direction: column;
+@media screen and (max-width:1240px) {
+    .profile {
+        flex-direction: column;
     }
-    
 }
-

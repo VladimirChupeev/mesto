@@ -1,5 +1,16 @@
-.body{
+.body {
+    max-width: 880px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     background-color: black;
+    margin: auto;
+}
+
+
+@media screen and (max-width:640px) {
+    .body {
+        margin: 0;
+    }
+
 }
