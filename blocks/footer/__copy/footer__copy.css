@@ -10,5 +10,7 @@
 @media screen and (max-width:400px) {
     .footer__copy {
         margin-left: 19px;
+        font-size: 14px;
+        line-height: 17px;
     }
 }
