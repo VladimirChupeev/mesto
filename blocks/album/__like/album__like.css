@@ -6,6 +6,8 @@
     background-position: center;
     background-image: url(../../../images/like.svg);
     border: none;
+    cursor: pointer;
+
 }
 
 .album__like:hover {

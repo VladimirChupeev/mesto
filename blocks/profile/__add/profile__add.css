@@ -21,3 +21,9 @@
         width: 282px;
     }
 }
+
+@media screen and (max-width:620px) {
+    .profile__add{
+        background-image: url(../../../images/plus320.svg);
+    }
+}

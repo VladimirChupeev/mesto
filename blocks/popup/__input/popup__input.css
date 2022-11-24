@@ -10,9 +10,9 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    padding-bottom: 13px;
+    padding-bottom: 8px;
 }
 
 .popup__input:last-of-type {
-    padding-top: 30px;
+    padding-top: 29px;
 }
