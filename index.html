@@ -27,51 +27,18 @@
 
         </section>
 
-        <section class="album">
-            <ul class="album__block">
+        <section id="albumCards" class="album__block">
+            <template id="albumTemplate">
                 <li class="album__element">
-                    <img class="album__foto" src="./images/photo-grid-arisa.jpg" alt="Байкал">
+                    <button class="album__delete"></button>
+                    <img class="album__foto">
                     <div class="album__coment">
-                        <h2 class="album__text">Байкал</h2>
-                        <button class="album__like" type="button"></button>
+                        <h2 class="album__text"></h2>
+                        <button type="button" class="album__like"></button>
                     </div>
                 </li>
-                <li class="album__element">
-                    <img class="album__foto" src="./images/photo-grid-elbrus.jpg" alt="Эльбрус">
-                    <div class="album__coment">
-                        <h2 class="album__text">Эльбрус</h2>
-                        <button class="album__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="album__element">
-                    <img class="album__foto" src="./images/place-kosa.jpg" alt="Куршская">
-                    <div class="album__coment">
-                        <h2 class="album__text">Куршская коса</h2>
-                        <button class="album__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="album__element">
-                    <img class="album__foto" src="./images/photo-grid-sochi.jpg" alt="Сочи">
-                    <div class="album__coment">
-                        <h2 class="album__text">Сочи</h2>
-                        <button class="album__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="album__element">
-                    <img class="album__foto" src="./images/place-karelia.jpg" alt="Корелия">
-                    <div class="album__coment">
-                        <h2 class="album__text">Корелия</h2>
-                        <button class="album__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="album__element">
-                    <img class="album__foto" src="./images/dombai.svg" alt="Домбай">
-                    <div class="album__coment">
-                        <h2 class="album__text">Домбай</h2>
-                        <button class="album__like" type="button"></button>
-                    </div>
-                </li>
-            </ul>
+            </template>
+    
 
         </section>
     </main>
@@ -93,6 +60,28 @@
         </div>
 
     </div>
+    <div id="add" class="popup">
+        <div class="popup__container">
+            <button class="popup__close" type="button"></button>
+            <h3 class="popup__title">Новое место</h3>
+            <form name="popup__add-form" class="popup__add-form popup__profile-form" >
+                <input placeholder="Название" name="popup__input_title" id="title" class="popup__input"
+                    type="text">
+                <input placeholder="Ссылка на картинку" name="popup__input_image-url" id="image-url"
+                    class="popup__input" type="text">
+                <button type="submit" class="popup__submit">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup" id="previewPopup">
+        <div class="popup__preview-container">
+            <button id="popupPictureClose" type="button" class="popup__close"></button>
+            <img id="previewImage" class="popup__preview-image" />
+            <h3 id="previewDescription" class="popup__preview-title"></h3>
+        </div>
+    </div>
+    
     <script src="./scripts/script.js"></script>
 </body>
 

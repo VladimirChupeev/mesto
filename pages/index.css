@@ -26,6 +26,9 @@
 @import url(../blocks/album/__coment/album__coment.css);
 @import url(../blocks/album/__text/album__text.css);
 @import url(../blocks/album/__like/album__like.css);
+@import url(../blocks/album/__like/_active/album__like_active.css);
+
+@import url(../blocks/album/__delete/album__delete.css);
 
 /* footer */
 @import url(../blocks/footer/footer.css);
@@ -41,3 +44,7 @@
 @import url(../blocks/popup/__submit/popup__submit.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__preview/__preview-close/popup__close-container.css);
+@import url(../blocks/popup/__preview/__preview-container/popup__preview-container.css);
+@import url(../blocks/popup/__preview/__preview-image/popup__preview-image.css);
+@import url(../blocks/popup/__preview/popup__preview-title/popup__preview-title.css);
