@@ -1,3 +1,27 @@
 .album{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(min-content, max-content));
+    gap: 17px;
+    margin-bottom: 20px;
+    list-style-type: none;
+    padding-left: 0;
     
+}
+
+@media screen and (max-width:1240px) {
+    .album{
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+    margin: auto;
+    justify-content: center;
+    }
+
+}
+
+@media screen and (max-width:980px) {
+    .album{
+    grid-template-columns: minmax(min-content, max-content);
+    gap: 20px;
+    width: 282px;
+
+    }
 }
