@@ -1,30 +1,4 @@
-// Массив
-const albumCards = [
-  {
-    name: "Байкал",
-    link: "./images/photo-grid-arisa.jpg",
-  },
-  {
-    name: "Эльбрус",
-    link: "./images/photo-grid-elbrus.jpg",
-  },
-  {
-    name: "Куршская коса",
-    link: "./images/place-kosa.jpg",
-  },
-  {
-    name: "Сочи",
-    link: "./images/photo-grid-sochi.jpg",
-  },
-  {
-    name: "Корелия",
-    link: "./images/place-karelia.jpg",
-  },
-  {
-    name: "Домбай",
-    link: "./images/dombai.svg",
-  },
-];
+
 // Кнопка редактирования профиля
 const profileEditButton = document.querySelector(".profile__edit");
 // popup профиля
@@ -51,33 +25,27 @@ const nameInputElement = document.querySelector("#name");
 const hobbyProfileElement = document.querySelector("#hobby");
 // Кнопка добавления картинки
 const addPopup = document.querySelector("#add");
-const addbutton = document.querySelector(".profile__add");
+const addButton = document.querySelector(".profile__add");
 const popupAddTitleInput = addCardPopup.querySelector("#title");
 const popupAddImageInput = addCardPopup.querySelector("#image-url");
 const albumTemplate = document.querySelector("#albumTemplate").content;
-// кнопка сохранить
 
-const submit = document.querySelector(".popup__submit");
 // строка имени и занятия
 const profileName = document.querySelector(".profile__name");
 const profileHobby = document.querySelector(".profile__hobby");
 
-// addEventListener
-profileEditButton.addEventListener("click", openProfilePopup);
-popupProfileCloseButton.addEventListener("click", closeProfilePopup);
-profileForm.addEventListener("submit", formProfileSubmitHandler);
-addCardForm.addEventListener("submit", formAddSubmitHandler);
-addbutton.addEventListener("click", openAddPopup);
-popupAddCloseButton.addEventListener("click", closeAddPopup);
-popupPreviewCloseButton.addEventListener("click", closePreviewPopup);
-
 // открытие и закрытие попапа редактирования профиля
-function openProfilePopup() {
-  profilePopup.classList.add("popup_opened");
-  fillProfileInputs();
+function openPopup (popupHtml){
+  popupHtml.classList.add("popup_opened");
 }
-function closeProfilePopup() {
-  profilePopup.classList.remove("popup_opened");
+function closePopup (popupHtml){
+  popupHtml.classList.remove("popup_opened");
+}
+
+
+function openProfilePopup(popupElement) {
+ openPopup(popupElement)
+  fillProfileInputs();
 }
 
 function formProfileSubmitHandler(evt) {
@@ -87,37 +55,21 @@ function formProfileSubmitHandler(evt) {
 
   profileName.textContent = nameInput;
   profileHobby.textContent = hobbyInput;
-  closeProfilePopup();
+  closePopup(profilePopup);
 }
 
 function fillProfileInputs() {
   nameInputElement.value = profileName.textContent;
   hobbyProfileElement.value = profileHobby.textContent;
-}
-
-// Попап добавления картинки
-function openAddPopup() {
-  addPopup.classList.add("popup_opened");
-}
-
-// Попап картинки
-function openPreviewPopup() {
-  previewPopup.classList.add("popup_opened");
-}
-
-function closePreviewPopup() {
-  previewPopup.classList.remove("popup_opened");
-}
-
-
-function closeAddPopup() {
-  addPopup.classList.remove("popup_opened");
 }
 
 function formAddSubmitHandler(evt) {
   evt.preventDefault();
   renderCard(popupAddTitleInput.value, popupAddImageInput.value);
-  closeAddPopup();
+  popupAddTitleInput.value = ""
+  popupAddImageInput.value = ""
+  closePopup(addPopup);
+
 }
 
 function fillProfileInputs() {
@@ -125,14 +77,10 @@ function fillProfileInputs() {
   hobbyProfileElement.value = profileHobby.textContent;
 }
 
-// активный лайк
-function tapLike() {
-  addLike.classList.add("album__like_active");
-}
 
 function renderCard(name, link) {
   const card = generateCard(name, link);
-  cards.append(card);
+  cards.prepend(card);
 }
 
 function generateCard(name, link) {
@@ -145,8 +93,9 @@ function generateCard(name, link) {
     const picture = previewPopup.querySelector("#previewImage");
     const clickedPicture = event.target;
     picture.src = clickedPicture.src;
+    picture.alt = name;
     pictureDescriptionPopup.innerText = clickedPicture.alt;
-    openPreviewPopup();
+    openPopup(previewPopup);
   });
 
   const cardText = card.querySelector(".album__text");
@@ -165,4 +114,13 @@ function generateCard(name, link) {
   return card;
 }
 
-albumCards.forEach((element) => renderCard(element.name, element.link));
+albumCards.reverse().forEach((element) => renderCard(element.name, element.link));
+
+// addEventListener
+profileEditButton.addEventListener("click", () => {openProfilePopup(profilePopup)});
+popupProfileCloseButton.addEventListener("click", () => {closePopup(profilePopup)});
+profileForm.addEventListener("submit", formProfileSubmitHandler);
+addCardForm.addEventListener("submit", formAddSubmitHandler);
+addButton.addEventListener("click", () => {openPopup(addPopup)});
+popupAddCloseButton.addEventListener("click", () => {closePopup(addPopup)});
+popupPreviewCloseButton.addEventListener("click", () => {closePopup(previewPopup)});

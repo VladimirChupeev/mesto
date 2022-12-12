@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css">
+    <script defer src="./scripts/cards/cards.js"></script>
+    <script defer src="./scripts/script.js"></script>
     <title>Место</title>
 </head>
 
@@ -51,9 +53,9 @@
             <button class="popup__close" type="button"></button>
             <h3 class="popup__title"> Редактировать профиль</h3>
             <form name="popup__profile-form" class="popup__profile-form">
-                <input placeholder="Имя" name="popup__input_name" id="name" class="popup__input popup__input_type_name"
+                <input required placeholder="Имя" name="popup__input_name" id="name" class="popup__input popup__input_type_name"
                     type="text">
-                <input placeholder="Хобби" name="popup__input_hobby" id="hobby"
+                <input required placeholder="Хобби" name="popup__input_hobby" id="hobby"
                     class="popup__input popup__input_type_hobby" type="text">
                 <button type="submit" class="popup__submit">Сохранить</button>
             </form>
@@ -65,10 +67,10 @@
             <button class="popup__close" type="button"></button>
             <h3 class="popup__title">Новое место</h3>
             <form name="popup__add-form" class="popup__add-form popup__profile-form" >
-                <input placeholder="Название" name="popup__input_title" id="title" class="popup__input"
+                <input required placeholder="Название" name="popup__input_title" id="title" class="popup__input"
                     type="text">
-                <input placeholder="Ссылка на картинку" name="popup__input_image-url" id="image-url"
-                    class="popup__input" type="text">
+                <input required placeholder="Ссылка на картинку" name="popup__input_image-url" id="image-url"
+                    class="popup__input" type="url">
                 <button type="submit" class="popup__submit">Создать</button>
             </form>
         </div>
@@ -82,7 +84,6 @@
         </div>
     </div>
     
-    <script src="./scripts/script.js"></script>
 </body>
 
 

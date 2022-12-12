@@ -1,7 +1,10 @@
 .album__foto {
+    display: block;
     width: 282px;
     height: 282px;
     grid-area: image;
     border-radius: 10px 10px 0 0;
     object-fit: cover;
+    background-color: black;
+    cursor: pointer;
 }

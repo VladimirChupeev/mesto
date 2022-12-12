@@ -20,7 +20,6 @@
 
 /* album */
 @import url(../blocks/album/album.css);
-@import url(../blocks/album/__block/album__block.css);
 @import url(../blocks/album/__element/album__element.css);
 @import url(../blocks/album/__foto/album__foto.css);
 @import url(../blocks/album/__coment/album__coment.css);
