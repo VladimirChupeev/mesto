@@ -9,6 +9,6 @@
     cursor: pointer;
 }
 
-.album__like_active {
+.album__like_active:hover {
     opacity: 0.6;
 }
