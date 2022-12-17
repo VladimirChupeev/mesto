@@ -1,4 +1,5 @@
 // Валидация
+debugger
 const showInputError = (formElement, inputElement, errorMessage, obj) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(obj.inputErrorClass);
@@ -13,12 +14,7 @@ const hideInputError = (formElement, inputElement, obj) => {
 
 const checkInputValidity = (formElement, inputElement, obj) => {
   if (!inputElement.validity.valid) {
-    showInputError(
-      formElement,
-      inputElement,
-      inputElement.validationMessage,
-      obj
-    );
+    showInputError(formElement,inputElement,inputElement.validationMessage,obj);
   } else {
     hideInputError(formElement, inputElement, obj);
   }
@@ -263,7 +259,7 @@ profileForm.addEventListener("submit", formProfileSubmitHandler);
 addButton.addEventListener('click',openAddCardPopup);
 addCardForm.addEventListener('submit',formAddSubmitHandler);
 
-
+fillProfileInputs();
 enableValidation(selectorElements);
 
 
