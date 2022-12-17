@@ -137,11 +137,6 @@ function formAddSubmitHandler(evt) {
   resetForm(addCardPopup);
 }
 
-function fillProfileInputs() {
-  nameInputElement.value = profileName.textContent;
-  hobbyProfileElement.value = profileHobby.textContent;
-}
-
 function renderCard(name, link) {
   const card = generateCard(name, link);
   cards.prepend(card);
@@ -198,7 +193,7 @@ profileForm.addEventListener("submit", formProfileSubmitHandler);
 addButton.addEventListener('click',openAddCardPopup);
 addCardForm.addEventListener('submit',formAddSubmitHandler);
 
-profilePopup();
+fillprofilePopup();
 validate.enableValidation(selectors);
 
 
