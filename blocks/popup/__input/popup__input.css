@@ -11,7 +11,7 @@
     white-space: nowrap;
     overflow: hidden;
     padding-bottom: 8px;
-
+    width: 100%;
 }
 
 .popup__input:last-of-type {
