@@ -198,8 +198,8 @@ profileForm.addEventListener("submit", formProfileSubmitHandler);
 addButton.addEventListener('click',openAddCardPopup);
 addCardForm.addEventListener('submit',formAddSubmitHandler);
 
-fillProfileInputs();
-enableValidation(selectorElements);
+fillProfilePopup();
+validate.enableValidation(selectors);
 
 
 
