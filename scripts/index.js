@@ -194,7 +194,7 @@ addButton.addEventListener('click',openAddCardPopup);
 addCardForm.addEventListener('submit',formAddSubmitHandler);
 
 // fillprofilePopup();
-validate.enableValidation(selectors);
+validate.enableValidation(selectorElements);
 
 
 
