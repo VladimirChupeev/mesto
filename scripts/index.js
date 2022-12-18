@@ -26,9 +26,6 @@ const albumCards = [
     link: "./images/dombai.svg",
   },
 ];
-const image = card.querySelector(".album__foto");
-const picture = previewPopup.querySelector("#previewImage");
-const buttonElement = cardFormAdd.querySelector(".popup__submit");
 // Кнопка редактирования профиля
 const profileEditButton = document.querySelector(".profile__edit");
 // popup профиля
@@ -52,6 +49,8 @@ const cardsContainer = document.querySelector("#albumCards");
 const popupProfileCloseButton = profilePopup.querySelector(".popup__close");
 const popupAddCloseButton = cardPopupAdd.querySelector(".popup__close");
 const popupPreviewCloseButton = previewPopup.querySelector(".popup__close");
+const picture = previewPopup.querySelector("#previewImage");
+const inputList = Array.from(cardFormAdd.querySelectorAll(".popup__input"));
 
 // Input профиля
 const nameInputElement = document.querySelector("#name");
@@ -68,8 +67,7 @@ const albumTemplate = document.querySelector("#albumTemplate").content;
 const profileName = document.querySelector(".profile__name");
 const profileHobby = document.querySelector(".profile__hobby");
 
-const popups = Array.from(document.querySelectorAll('.popup'))
-
+const popups = Array.from(document.querySelectorAll(".popup"));
 
 // открытие и закрытие попапов
 function openPopup(htmlPopup) {
@@ -152,11 +150,11 @@ function opencardPopupAdd() {
 
 function generateCard(name, link) {
   const card = albumTemplate.querySelector(".album__element").cloneNode(true);
-  const clickedPicture = event.target;
-
+  const image = card.querySelector(".album__foto");
   image.alt = name;
   image.src = link;
   image.addEventListener("click", (event) => {
+    const clickedPicture = event.target;
     picture.src = clickedPicture.src;
     picture.alt = name;
     pictureDescriptionPopup.innerText = clickedPicture.alt;
@@ -169,7 +167,7 @@ function generateCard(name, link) {
     const className = "album__like_active";
     const classList = event.target.classList;
 
-  classList.toggle(className);
+    classList.toggle(className);
   });
 
   card.querySelector(".album__delete").addEventListener("click", (event) => {
@@ -180,8 +178,8 @@ function generateCard(name, link) {
 }
 
 function setButttonStateForcardFormAdd() {
-  const inputList = Array.from(cardFormAdd.querySelectorAll(".popup__input"));
-  toggleButtonState(inputList, buttonElement, selectorElements);
+  const buttonElement = cardFormAdd.querySelector(".popup__submit");
+  validate.toggleButtonState(inputList, buttonElement, selectorElements);
 }
 
 albumCards
@@ -194,9 +192,8 @@ profileForm.addEventListener("submit", formProfileSubmitHandler);
 ButtonAdd.addEventListener("click", opencardPopupAdd);
 cardFormAdd.addEventListener("submit", AddFormSubmitHandler);
 popups.forEach((popup) => {
-  popup.addEventListener('click', handleClickOutsidePopup)
-})
-
+  popup.addEventListener("click", handleClickOutsidePopup);
+});
 
 // fillprofilePopup();
 validate.enableValidation(selectorElements);
