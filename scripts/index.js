@@ -1,4 +1,4 @@
-import * as validate from './validate.js'
+import * as validate from "./validate.js";
 
 const albumCards = [
   {
@@ -26,13 +26,15 @@ const albumCards = [
     link: "./images/dombai.svg",
   },
 ];
-
+const image = card.querySelector(".album__foto");
+const picture = previewPopup.querySelector("#previewImage");
+const buttonElement = cardFormAdd.querySelector(".popup__submit");
 // Кнопка редактирования профиля
 const profileEditButton = document.querySelector(".profile__edit");
 // popup профиля
 const profilePopup = document.querySelector("#profile");
 //popup добавления карты
-const addCardPopup = document.querySelector("#add");
+const cardPopupAdd = document.querySelector("#add");
 // popup просмотра картинки
 const previewPopup = document.querySelector("#previewPopup");
 
@@ -42,13 +44,13 @@ const pictureDescriptionPopup = previewPopup.querySelector(
 // форма профиля
 const profileForm = document.querySelector(".popup__profile-form");
 // форма добавления карточки
-const addCardForm = document.querySelector(".popup__add-form");
+const cardFormAdd = document.querySelector(".popup__add-form");
 
-const cards = document.querySelector("#albumCards");
+const cardsContainer = document.querySelector("#albumCards");
 
 // кнопка закрытия формы
 const popupProfileCloseButton = profilePopup.querySelector(".popup__close");
-const popupAddCloseButton = addCardPopup.querySelector(".popup__close");
+const popupAddCloseButton = cardPopupAdd.querySelector(".popup__close");
 const popupPreviewCloseButton = previewPopup.querySelector(".popup__close");
 
 // Input профиля
@@ -56,25 +58,26 @@ const nameInputElement = document.querySelector("#name");
 const hobbyProfileElement = document.querySelector("#hobby");
 
 // Кнопка добавления картинки
-const addPopup = document.querySelector("#add");
-const addButton = document.querySelector(".profile__add");
-const popupAddTitleInput = addCardPopup.querySelector("#title");
-const popupAddImageInput = addCardPopup.querySelector("#image-url");
+const popupAdd = document.querySelector("#add");
+const ButtonAdd = document.querySelector(".profile__add");
+const popupAddTitleInput = cardPopupAdd.querySelector("#title");
+const popupAddImageInput = cardPopupAdd.querySelector("#image-url");
 const albumTemplate = document.querySelector("#albumTemplate").content;
 
 // строка имени и занятия
 const profileName = document.querySelector(".profile__name");
 const profileHobby = document.querySelector(".profile__hobby");
 
-// открытие и закрытие попапов 
+const popups = Array.from(document.querySelectorAll('.popup'))
+
+
+// открытие и закрытие попапов
 function openPopup(htmlPopup) {
   htmlPopup.classList.add("popup_opened");
-  htmlPopup.addEventListener("mousedown", handleClickOutsidePopup);
   document.addEventListener("keydown", handleEscapePressPopup);
 }
 function closePopup(htmlPopup) {
   htmlPopup.classList.remove("popup_opened");
-  htmlPopup.removeEventListener("mousedown", handleClickOutsidePopup);
   document.removeEventListener("keydown", handleEscapePressPopup);
 }
 function handleClickOutsidePopup(evt) {
@@ -109,7 +112,7 @@ const selectorElements = {
   inputErrorClass: "popup__input_type_error",
 };
 
-function openProfilePopup () {
+function openProfilePopup() {
   openPopup(profilePopup);
   fillProfileInputs();
 }
@@ -129,33 +132,31 @@ function fillProfileInputs() {
   hobbyProfileElement.value = profileHobby.textContent;
 }
 
-function formAddSubmitHandler(evt) {
+function AddFormSubmitHandler(evt) {
   evt.preventDefault();
 
   renderCard(popupAddTitleInput.value, popupAddImageInput.value, true);
-  closePopup(addCardPopup);
-  resetForm(addCardPopup);
+  closePopup(cardPopupAdd);
+  resetForm(cardPopupAdd);
 }
 
 function renderCard(name, link) {
   const card = generateCard(name, link);
-  cards.prepend(card);
+  cardsContainer.prepend(card);
 }
 
-function openAddCardPopup () {
-  openPopup(addCardPopup);
-  setButttonStateForAddCardForm();
+function opencardPopupAdd() {
+  openPopup(cardPopupAdd);
+  setButttonStateForcardFormAdd();
 }
 
 function generateCard(name, link) {
   const card = albumTemplate.querySelector(".album__element").cloneNode(true);
+  const clickedPicture = event.target;
 
-  const image = card.querySelector(".album__foto");
   image.alt = name;
   image.src = link;
   image.addEventListener("click", (event) => {
-    const picture = previewPopup.querySelector("#previewImage");
-    const clickedPicture = event.target;
     picture.src = clickedPicture.src;
     picture.alt = name;
     pictureDescriptionPopup.innerText = clickedPicture.alt;
@@ -163,12 +164,12 @@ function generateCard(name, link) {
   });
 
   const cardText = card.querySelector(".album__text");
-  cardText.innerText = name;
+  cardText.textContent = name;
   card.querySelector(".album__like").addEventListener("click", (event) => {
     const className = "album__like_active";
     const classList = event.target.classList;
 
-    classList.toggle(className);
+  classList.toggle(className);
   });
 
   card.querySelector(".album__delete").addEventListener("click", (event) => {
@@ -178,30 +179,24 @@ function generateCard(name, link) {
   return card;
 }
 
-function setButttonStateForAddCardForm() {
-  const inputList = Array.from(addCardForm.querySelectorAll('.popup__input'));
-  const buttonElement = addCardForm.querySelector('.popup__submit');
+function setButttonStateForcardFormAdd() {
+  const inputList = Array.from(cardFormAdd.querySelectorAll(".popup__input"));
   toggleButtonState(inputList, buttonElement, selectorElements);
 }
 
-
-albumCards.reverse().forEach((element) => renderCard(element.name, element.link));
+albumCards
+  .reverse()
+  .forEach((element) => renderCard(element.name, element.link));
 
 // addEventListener
 profileEditButton.addEventListener("click", openProfilePopup);
 profileForm.addEventListener("submit", formProfileSubmitHandler);
-addButton.addEventListener('click',openAddCardPopup);
-addCardForm.addEventListener('submit',formAddSubmitHandler);
+ButtonAdd.addEventListener("click", opencardPopupAdd);
+cardFormAdd.addEventListener("submit", AddFormSubmitHandler);
+popups.forEach((popup) => {
+  popup.addEventListener('click', handleClickOutsidePopup)
+})
+
 
 // fillprofilePopup();
 validate.enableValidation(selectorElements);
-
-
-
-
-
-
-
-
-
-
