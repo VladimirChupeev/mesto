@@ -38,11 +38,11 @@ const previewPopup = document.querySelector("#previewPopup");
 const pictureDescriptionPopup = previewPopup.querySelector(
   "#previewDescription"
 );
+
 // форма профиля
 const profileForm = document.querySelector(".popup__profile-form");
 // форма добавления карточки
 const cardFormAdd = document.querySelector(".popup__add-form");
-
 const cardsContainer = document.querySelector("#albumCards");
 
 // кнопка закрытия формы
@@ -58,7 +58,7 @@ const hobbyProfileElement = document.querySelector("#hobby");
 
 // Кнопка добавления картинки
 const popupAdd = document.querySelector("#add");
-const ButtonAdd = document.querySelector(".profile__add");
+const buttonAdd = document.querySelector(".profile__add");
 const popupAddTitleInput = cardPopupAdd.querySelector("#title");
 const popupAddImageInput = cardPopupAdd.querySelector("#image-url");
 const albumTemplate = document.querySelector("#albumTemplate").content;
@@ -74,10 +74,12 @@ function openPopup(htmlPopup) {
   htmlPopup.classList.add("popup_opened");
   document.addEventListener("keydown", handleEscapePressPopup);
 }
+
 function closePopup(htmlPopup) {
   htmlPopup.classList.remove("popup_opened");
   document.removeEventListener("keydown", handleEscapePressPopup);
 }
+
 function handleClickOutsidePopup(evt) {
   if (
     evt.target.classList.contains("popup_opened") ||
@@ -115,7 +117,7 @@ function openProfilePopup() {
   fillProfileInputs();
 }
 
-function formProfileSubmitHandler(evt) {
+function handleSubmitProfileForm(evt) {
   evt.preventDefault();
   const nameInput = nameInputElement.value;
   const hobbyInput = hobbyProfileElement.value;
@@ -130,7 +132,7 @@ function fillProfileInputs() {
   hobbyProfileElement.value = profileHobby.textContent;
 }
 
-function AddFormSubmitHandler(evt) {
+function addFormSubmitHandler(evt) {
   evt.preventDefault();
 
   renderCard(popupAddTitleInput.value, popupAddImageInput.value, true);
@@ -143,7 +145,7 @@ function renderCard(name, link) {
   cardsContainer.prepend(card);
 }
 
-function opencardPopupAdd() {
+function openCardPopupAdd() {
   openPopup(cardPopupAdd);
   setButttonStateForcardFormAdd();
 }
@@ -188,9 +190,9 @@ albumCards
 
 // addEventListener
 profileEditButton.addEventListener("click", openProfilePopup);
-profileForm.addEventListener("submit", formProfileSubmitHandler);
-ButtonAdd.addEventListener("click", opencardPopupAdd);
-cardFormAdd.addEventListener("submit", AddFormSubmitHandler);
+profileForm.addEventListener("submit", handleSubmitProfileForm);
+buttonAdd.addEventListener("click", openCardPopupAdd);
+cardFormAdd.addEventListener("submit", addFormSubmitHandler);
 popups.forEach((popup) => {
   popup.addEventListener("click", handleClickOutsidePopup);
 });
