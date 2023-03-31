@@ -1,4 +1,5 @@
-import * as validate from "./validate.js";
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 
 const albumCards = [
   {
@@ -39,6 +40,18 @@ const pictureDescriptionPopup = previewPopup.querySelector(
   "#previewDescription"
 );
 
+// селекторы для валидации
+const selectorElements = {
+  formSelector: ".form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit",
+  inactiveButtonClass: "popup__button_inactive",
+  inputErrorClass: "popup__input_type_error",
+};
+const formList = Array.from(
+  document.querySelectorAll(selectorElements.formSelector)
+);
+
 // форма профиля
 const profileForm = document.querySelector(".popup__profile-form");
 // форма добавления карточки
@@ -61,7 +74,7 @@ const popupAdd = document.querySelector("#add");
 const buttonAdd = document.querySelector(".profile__add");
 const popupAddTitleInput = cardPopupAdd.querySelector("#title");
 const popupAddImageInput = cardPopupAdd.querySelector("#image-url");
-const albumTemplate = document.querySelector("#albumTemplate").content;
+// const albumTemplate = document.querySelector("#albumTemplate").content;
 
 // строка имени и занятия
 const profileName = document.querySelector(".profile__name");
@@ -103,15 +116,6 @@ function resetForm(element) {
   }
 }
 
-// селекторы для валидации
-const selectorElements = {
-  formSelector: ".form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: "popup__button_inactive",
-  inputErrorClass: "popup__input_type_error",
-};
-
 function openProfilePopup() {
   openPopup(profilePopup);
   fillProfileInputs();
@@ -135,53 +139,26 @@ function fillProfileInputs() {
 function addFormSubmitHandler(evt) {
   evt.preventDefault();
 
-  renderCard(popupAddTitleInput.value, popupAddImageInput.value, true);
+  renderCard(popupAddTitleInput.value, popupAddImageInput.value);
   closePopup(cardPopupAdd);
   resetForm(cardPopupAdd);
 }
 
 function renderCard(name, link) {
-  const card = generateCard(name, link);
-  cardsContainer.prepend(card);
+  const card = new Card(name, link, "#albumTemplate", handlePictureClick);
+  const cardElement = card.createCard();
+  cardsContainer.prepend(cardElement);
 }
 
 function openCardPopupAdd() {
   openPopup(cardPopupAdd);
-  setButttonStateForcardFormAdd();
 }
 
-function generateCard(name, link) {
-  const card = albumTemplate.querySelector(".album__element").cloneNode(true);
-  const image = card.querySelector(".album__foto");
-  image.alt = name;
-  image.src = link;
-  image.addEventListener("click", (event) => {
-    const clickedPicture = event.target;
-    picture.src = clickedPicture.src;
-    picture.alt = name;
-    pictureDescriptionPopup.innerText = clickedPicture.alt;
-    openPopup(previewPopup);
-  });
-
-  const cardText = card.querySelector(".album__text");
-  cardText.textContent = name;
-  card.querySelector(".album__like").addEventListener("click", (event) => {
-    const className = "album__like_active";
-    const classList = event.target.classList;
-
-    classList.toggle(className);
-  });
-
-  card.querySelector(".album__delete").addEventListener("click", (event) => {
-    event.target.closest(".album__element").remove();
-  });
-
-  return card;
-}
-
-function setButttonStateForcardFormAdd() {
-  const buttonElement = cardFormAdd.querySelector(".popup__submit");
-  validate.toggleButtonState(inputList, buttonElement, selectorElements);
+function handlePictureClick(name, link) {
+  picture.src = link;
+  picture.alt = name;
+  pictureDescriptionPopup.innerText = name;
+  openPopup(previewPopup);
 }
 
 albumCards
@@ -197,5 +174,7 @@ popups.forEach((popup) => {
   popup.addEventListener("click", handleClickOutsidePopup);
 });
 
-// fillprofilePopup();
-validate.enableValidation(selectorElements);
+formList.forEach((form) => {
+  const formElementValidation = new FormValidator(selectorElements, form);
+  formElementValidation.enableValidation();
+});
