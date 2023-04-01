@@ -52,6 +52,8 @@ const formList = Array.from(
   document.querySelectorAll(selectorElements.formSelector)
 );
 
+const formValidators = {};
+
 // форма профиля
 const profileForm = document.querySelector(".popup__profile-form");
 // форма добавления карточки
@@ -145,13 +147,21 @@ function addFormSubmitHandler(evt) {
 }
 
 function renderCard(name, link) {
-  const card = new Card(name, link, "#albumTemplate", handlePictureClick);
-  const cardElement = card.createCard();
+  const cardElement = createCard(name, link);
   cardsContainer.prepend(cardElement);
 }
 
+
+function createCard(name, link) {
+const card = new Card(name, link, "#albumTemplate", handlePictureClick);
+const cardElement = card.createCard();
+return cardElement
+}
+
+
 function openCardPopupAdd() {
   openPopup(cardPopupAdd);
+  formValidators["popup__add-form"].disableSubmitButton();
 }
 
 function handlePictureClick(name, link) {
@@ -177,4 +187,6 @@ popups.forEach((popup) => {
 formList.forEach((form) => {
   const formElementValidation = new FormValidator(selectorElements, form);
   formElementValidation.enableValidation();
+  const formName = form.getAttribute("name");
+  formValidators[formName] = formElementValidation;
 });

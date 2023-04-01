@@ -32,19 +32,32 @@ export class Card {
     this._cardElement
       .querySelector(".album__like")
       .addEventListener("click", (event) => {
-        const className = "album__like_active";
-        const classList = event.target.classList;
-        classList.toggle(className);
+    this._toggleLike(event);
       });
 
+      
     this._cardElement
       .querySelector(".album__delete")
       .addEventListener("click", (event) => {
-        event.target.closest(".album__element").remove();
+        this._deleteCard(event);
       });
 
-    this._image.addEventListener("click", (event) => {
-      this._handlePictureClick(this._name, this._link);
-    });
+    this._handleImageClick();
   }
+    _toggleLike(event) {
+        const className = "album__like_active";
+        const classList = event.target.classList;
+        classList.toggle(className);
+    }
+    
+    
+    _deleteCard(event){
+        event.target.closest(".album__element").remove();
+    }
+    
+    _handleImageClick(){
+        this._image.addEventListener("click", (event) => {
+            this._handlePictureClick(this._name, this._link);
+          });
+    }
 }
