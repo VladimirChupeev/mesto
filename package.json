@@ -16,7 +16,11 @@
     "webpack-cli": "^5.0.1"
   },
   "scripts": {
-    "build": "rd /s /q dist && webpack", // добавили удаление папки
+    "build": "rd /s /q dist && webpack",
+  },
+  "scripts": {
+    "build": "rm -rf dist && webpack",
+    "dev": "webpack serve"
   } 
 
 }
