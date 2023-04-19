@@ -9,14 +9,14 @@
     <title>Место</title>
 </head>
 
-<body class="body">
-
+<body class="body">                  
+    
     <header class="header">
-        <img class="header__logo" src="./images/header_logo-min.svg" alt="логотип">
+        <img class="header__logo" src="<%=require('./images/header_logo-min.svg')%>" alt="логотип"/>
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="./images/kysto.svg" alt="Кусто">
+            <img class="profile__avatar" src="<%=require('./images/kysto.svg')%>" alt="Кусто"/>
             <div class="profile__info">
                 <div class="profile__title">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -29,7 +29,7 @@
         </section>
 
         <section id="albumCards" class="album">
-            <ul>
+            <!-- <ul> -->
                 <template id="albumTemplate">
                     <li class="album__element">
                         <button class="album__delete"></button>
@@ -40,7 +40,7 @@
                         </div>
                     </li>
                 </template>
-            </ul>
+            <!-- </ul> -->
 
         </section>
     </main>
@@ -53,10 +53,10 @@
             <button class="popup__close" type="button"></button>
             <h3 class="popup__title"> Редактировать профиль</h3>
             <form novalidate name="popup__profile-form" class="popup__profile-form form">
-                <input required placeholder="Имя" name="name" id="name" class="popup__input popup__input_type_name"
+                <input required placeholder="Имя" name="_name" id="name" class="popup__input popup__input_type_name"
                     type="text" minlength="2" maxlength="40">
                 <span class="form__error name-error"></span>
-                <input required placeholder="Хобби" name="hobby" id="hobby" class="popup__input popup__input_type_hobby"
+                <input required placeholder="Хобби" name="_hobby" id="hobby" class="popup__input popup__input_type_hobby"
                     type="text" minlength="2">
                 <span class="form__error hobby-error"></span>
                 <button type="submit" class="popup__submit">Сохранить</button>
@@ -87,7 +87,6 @@
             <h3 id="previewDescription" class="popup__preview-title"></h3>
         </div>
     </div>
-    <script type="module" src="./scripts/index.js"></script>
 </body>
 
 
