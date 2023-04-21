@@ -24,14 +24,13 @@ export class Card {
     this._image.alt = this._name;
     this._image.src = this._link;
     this._cardElement.querySelector(".album__text").textContent = this._name;
+    this._albumLikeElement = this._cardElement.querySelector(".album__like");
     this._setEventListeners();
     return this._cardElement;
   }
 
   _setEventListeners() {
-    this._cardElement
-      .querySelector(".album__like")
-      .addEventListener("click", (event) => {
+    this._albumLikeElement.addEventListener("click", (event) => {
     this._toggleLike(event);
       });
 
@@ -45,14 +44,13 @@ export class Card {
     this._handleImageClick();
   }
     _toggleLike(event) {
-        const className = "album__like_active";
-        const classList = event.target.classList;
-        classList.toggle(className);
+        this._albumLikeElement.classList.toggle("album__like_active");
     }
     
     
     _deleteCard(event){
-        event.target.closest(".album__element").remove();
+      this._cardElement.remove();
+      this._cardElement = null;
     }
     
     _handleImageClick(){

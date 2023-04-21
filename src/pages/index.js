@@ -1,17 +1,17 @@
-import { Card } from "../scripts/Card.js";
-import { FormValidator } from "../scripts/FormValidator.js";
-import PopupWithForm from "../scripts/PopupWithForm.js";
-import PopupWithImage from "../scripts/PopupWithImage.js";
-import UserInfo from "../scripts/UserInfo.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
 import "./index.css";
-import Section from "../scripts/Section.js";
+import Section from "../components/Section.js";
 import baikal from "../images/photo-grid-arisa.jpg";
 import elbrus from "../images/photo-grid-elbrus.jpg";
 import kosa from "../images/place-kosa.jpg";
 import sochi from "../images/photo-grid-sochi.jpg";
 import karelia from "../images/place-karelia.jpg";
 import dombai from "../images/dombai.svg";
-import { selectorElements } from "../scripts/SelectorElements.js";
+import { selectorElements } from "../components/selectorElements.js";
 
 const albumCards = [
   {
@@ -49,26 +49,27 @@ const cardList = new Section(
     items: albumCards,
     renderer: (card) => {
       const cardElement = createCard(card.name, card.link);
-      cardList.addItem(cardElement);
+      cardList.addItemAppend(cardElement);
     },
   },
   "#albumCards"
 );
 
 const userInfo = new UserInfo({
-  name: profileName.textContent,
-  hobby: profileHobby.textContent,
+  nameSelector: ".profile__name" ,
+  hobbySelector: ".profile__hobby",
 });
 const popupProfileForm = new PopupWithForm("#profile", (data) => {
   userInfo.setUserInfo(data._name, data._hobby);
   const info = userInfo.getUserInfo();
-  profileName.textContent = info.name;
-  profileHobby.textContent = info.hobby;
+  fillProfileOnPage(info);
 });
+
+
 
 const popupAddCardForm = new PopupWithForm("#add", (data) => {
   const cardElement = createCard(data.name, data.link);
-  cardList.addItem(cardElement);
+  cardList.addItemPrepend(cardElement);
 });
 
 const popupPicture = new PopupWithImage("#previewPopup");
@@ -79,11 +80,6 @@ const formList = Array.from(
 
 const formValidators = {};
 
-
-
-// Input профиля
-const nameInputElement = document.querySelector("#name");
-const hobbyProfileElement = document.querySelector("#hobby");
 
 // Кнопка добавления картинки
 const buttonAdd = document.querySelector(".profile__add");
@@ -96,9 +92,9 @@ popupAddCardForm.setEventListeners();
 popupPicture.setEventListeners();
 
 
-function fillProfileInputs() {
-  nameInputElement.value = profileName.textContent;
-  hobbyProfileElement.value = profileHobby.textContent;
+function fillProfileOnPage(info) {
+  profileName.textContent = info.name;
+  profileHobby.textContent = info.hobby;
 }
 
 
@@ -119,6 +115,8 @@ profileEditButton.addEventListener("click", () => {
 });
 buttonAdd.addEventListener("click", () => {
   popupAddCardForm.open();
+  console.log(formValidators)
+  formValidators["popup__add-form"].resetValidation();
 });
 
 
@@ -128,5 +126,5 @@ formList.forEach((form) => {
   const formName = form.getAttribute("name");
   formValidators[formName] = formElementValidation;
 });
-
 cardList.renderer();
+
