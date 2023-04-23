@@ -61,8 +61,6 @@ const userInfo = new UserInfo({
 });
 const popupProfileForm = new PopupWithForm("#profile", (data) => {
   userInfo.setUserInfo(data._name, data._hobby);
-  const info = userInfo.getUserInfo();
-  fillProfileOnPage(info);
 });
 
 
@@ -92,13 +90,6 @@ popupAddCardForm.setEventListeners();
 popupPicture.setEventListeners();
 
 
-function fillProfileOnPage(info) {
-  profileName.textContent = info.name;
-  profileHobby.textContent = info.hobby;
-}
-
-
-
 function createCard(name, link) {
   const card = new Card(name, link, "#albumTemplate", handlePictureClick);
   const cardElement = card.createCard();
@@ -110,7 +101,7 @@ function handlePictureClick(name, link) {
 
 
 profileEditButton.addEventListener("click", () => {
-  popupProfileForm.setInputValues(userInfo);
+  popupProfileForm.setInputValues(userInfo.getUserInfo());
   popupProfileForm.open();
 });
 buttonAdd.addEventListener("click", () => {
