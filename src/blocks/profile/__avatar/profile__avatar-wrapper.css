@@ -1,0 +1,5 @@
+.profile__avatar-wrapper:hover {
+    background-image: url("../../../images/big-pen.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }

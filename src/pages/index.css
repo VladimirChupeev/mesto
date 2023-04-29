@@ -16,6 +16,7 @@
 @import url(../blocks/profile/__hobby/profile__hobby.css);
 @import url(../blocks/profile/__edit/profile__edit.css);
 @import url(../blocks/profile/__add/profile__add.css);
+@import url(../blocks/profile/__avatar/profile__avatar-wrapper.css);
 
 
 /* album */
@@ -26,8 +27,10 @@
 @import url(../blocks/album/__text/album__text.css);
 @import url(../blocks/album/__like/album__like.css);
 @import url(../blocks/album/__like/_active/album__like_active.css);
-
+@import url(../blocks/album/__like/albim__like-container.css);
+@import url(../blocks/album/__counter/album__counter-like.css);
 @import url(../blocks/album/__delete/album__delete.css);
+@import url(../blocks/album/__delete/__hidden/album__delete_hidden.css);
 
 /* footer */
 @import url(../blocks/footer/footer.css);

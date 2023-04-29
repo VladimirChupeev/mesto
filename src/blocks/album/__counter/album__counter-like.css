@@ -1,0 +1,10 @@
+.album__counter-like{
+        margin: 3px auto 0 auto;
+        max-width: 10px;
+        font-family: "Inter";
+        font-weight: 400;
+        text-align: center;
+        color: #000000;
+        font-size: 13px;
+        line-height: 16px;
+}
