@@ -19,6 +19,17 @@ let userInfo;
 let cardList;
 let currentCardForDelete;
 
+cardList = new Section(
+    {
+      renderer: (card) => {
+        const cardElement = createCard(card);
+        cardList.addItemAppend(cardElement);
+      },
+    },
+    "#albumCards"
+  );
+
+
 // Все валидаторы
 
 const formValidators = {};
@@ -209,18 +220,10 @@ Promise.all([api.getProfile(), api.getCards()])
     });
     userInfo.fillProfileOnPage();
     userInfo.updateAvatar(res[0].avatar);
-    cardList = new Section(
-      {
-        items: res[1],
-        renderer: (card) => {
-          const cardElement = createCard(card);
-          cardList.addItemAppend(cardElement);
-        },
-      },
-      "#albumCards"
-    );
-    cardList.renderer();
-  })
+    cardList.renderer(res[1]);
+
+
+})
   .catch((err) => {
     console.log(err);
   });
